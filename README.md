@@ -818,7 +818,7 @@ You supply the currency_id (initially 1 or 2) and it should return a JSON array 
 
 This API call takes an address and a currency_id as arguments and should return a JSON object with an address and a transactions key. The transactions key should have an array of all transactions for the address and whether or not this implementation considers a given transaction valid. 
 
-Most likely this will capture most of the discrepancies. If this is not proof enough then in future we can supply additional information such as the amount transferred per transaction.
+This will likely capture most of the discrepancies. If this is not proof enough then in future we can supply additional information such as the amount transferred per transaction.
 
 For Simple Send transactions accepted_amount and bought_amount can be null values. These values are only used for Distributed Exchange transactions. The accepted amount should contain the amount that was accepted when a Purchase Offer got added to a block.
 
