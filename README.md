@@ -808,7 +808,7 @@ One of the large differences between Mastercoin and Bitcoin is that there is no 
 [{address: 1KZmDQGzGJWYmPP9X3b7TA9dY91KBXgaG4, balance: 20.1}, {address: 1Q1sFqsi8S5DxV5hz6sWLamGBp9To93iG7, balance: 3.1}, etc..]
 ```
 
-You supply this URL a currency_id, initially 1 or 2, and it should return an JSON array of objects with two keys: address and balance. This will be a quick way to spot differences between implementations. If an other returns a different balance for two implementations a second call can be used to spot the offending transaction.
+You supply the currency_id (initially 1 or 2) and it should return a JSON array of objects with two keys: address and balance. This will be a quick way to spot differences between implementations. If the API call returns a different balance for two implementations then a second call can be used to spot the offending transaction.
 
 **GET /mastercoin_verify/transactions/#address#?currency_id=#currency_id#**
 
@@ -816,9 +816,9 @@ You supply this URL a currency_id, initially 1 or 2, and it should return an JSO
 {address: 1KZmDQGzGJWYmPP9X3b7TA9dY91KBXgaG4, transactions: [{tx_hash: 5f01def181b761f1d03bcd20590c5729a47b11c68955b364add9253d7aec5eb9, valid: true, accepted_amount: nil, bought_amount: nil}, {tx_hash: 130c5175d4f3e9add03bd1d115a87b26e613293fbe3815b970f8fc830f018ebc, valid: false, accepted_amount: nil, bought_amount: nil}, etc..]} 
 ```
 
-This URL takes an address and currency_id as arguments and should return an JSON object with an address and a transactions key for this given address. The transactions key should have an array of all transactions for this address and whether this implementation considers a given transaction valid or not. 
+This API call takes an address and a currency_id as arguments and should return a JSON object with an address and a transactions key. The transactions key should have an array of all transactions for the address and whether or not this implementation considers a given transaction valid. 
 
-In all likeliness this will capture most of the discrepancies. If this doesn't proof enough we can supply addional information like the amount transferred per transaction in the future.
+This will likely capture most of the discrepancies. If this is not proof enough then in future we can supply additional information such as the amount transferred per transaction.
 
 For Simple Send transactions accepted_amount and bought_amount can be null values. These values are only used for Distributed Exchange transactions. The accepted amount should contain the amount that was accepted when a Purchase Offer got added to a block.
 
